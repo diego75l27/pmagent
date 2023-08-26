@@ -1,6 +1,6 @@
 # PM Agent
-Created to help Human Project Managers, it's a versatile tool set to 
-revolutionize Project Management and **Redefining productivity**.
+Created to help Human Project Managers, this is a versatile **AI Agent** set to 
+revolutionize Project Management and **Redefining Productivity**.
 
 
 By leveraging **LLMs and textual interfaces**, we aim to reduce information 
