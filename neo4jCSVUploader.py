@@ -1,4 +1,3 @@
-import gradio as gr
 from neo4j import GraphDatabase
 import pandas as pd
 
