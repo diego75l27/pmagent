@@ -4,3 +4,7 @@ requests
 openai
 langchain
 gradio
+flask
+transformers
+pandas
+neo4j
