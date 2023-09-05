@@ -3,8 +3,11 @@ hupper
 requests
 openai
 langchain
+langchain-experimental
 gradio
 flask
 transformers
 pandas
 neo4j
+atlassian-python-api
+mysql-connector-python
