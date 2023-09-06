@@ -3,7 +3,7 @@ from dotenv import load_dotenv
 import pandas as pd
 import gradio as gr
 import os
-import neo4jCSVUploader
+#import neo4jCSVUploader
 import evmDBChat
 
 # load environment variables from .env.list
