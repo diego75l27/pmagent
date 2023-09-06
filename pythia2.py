@@ -47,4 +47,4 @@ with gr.Blocks() as iface:
             description="Your Project Management Agent for Enhanced Productivity",
         )
 
-iface.launch(share=TRUE)
+iface.launch(share=True)
