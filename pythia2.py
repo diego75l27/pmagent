@@ -15,7 +15,7 @@ port = os.getenv("MARIADB_PORT")
 database = os.getenv("MARIADB_DBASE")
 
 open_ai_key = os.getenv("OPENAI_API_KEY")
-gpt_model = os.getenv("model-gpt3")
+gpt_model = os.getenv("model-gpt4")
 temperature = float(os.getenv("temperature"))
 dburl = f"mysql+mysqlconnector://{user}:{password}@{host}:{port}/{database}"
 
