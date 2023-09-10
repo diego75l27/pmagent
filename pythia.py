@@ -1,10 +1,10 @@
 from random import random
 from dotenv import load_dotenv
+from evm import evmDBChat
 import pandas as pd
 import gradio as gr
 import os
-import neo4jCSVUploader
-import evmDBChat
+import random
 
 # load environment variables from .env.list
 load_dotenv()
@@ -35,33 +35,26 @@ config_dict = {
 
 # Load chat interface
 def pythiaChat(message, history):
-    evmChat = evmDBChat.evmDBChat(config_dict)
-    return evmChat.chatEvmDb(message)
+    return
 
 
-# Neo4j configuration
-uri = os.getenv('GRAPHDB_URI')
-username = os.getenv('GRAPHDB_USER')
-password = os.getenv('GRAPHDB_PASS')
+def respond(message, chat_history):
+    # call SQLChain
+    evm_chat = evmDBChat.evmDBChat(config_dict)
 
-# Instantiate the Neo4jCSVUploader class
-uploader = neo4jCSVUploader.Neo4jCSVUploader(uri, username, password)
+    bot_message = evm_chat.chatEvmDb(message)
+    chat_history.append((message, bot_message))
+    explain = evm_chat.explanation
+    return "", chat_history, explain
 
-with gr.Blocks() as iface:
-    with gr.Tab("Upload Nodes & Relationships"):
-        inp = gr.File()
-        uploadNodes = gr.Button(value="Submit")
-        out = gr.Textbox()
-        uploadNodes.click(
-            fn=uploader.process_upload,
-            inputs=inp,
-            outputs=out
-        )
-    with gr.Tab("Q&A SQL Data"):
-        gr.ChatInterface(
-            fn=pythiaChat,
-            title="EVM Agent",
-            description="Your Project Management Agent for Enhanced Productivity",
-        )
 
-iface.launch()
+with gr.Blocks() as demo:
+    with gr.Tab("PM Agent"):
+        chatbot = gr.Chatbot()
+        msg = gr.Textbox()
+        explanation = gr.Textbox(label="Explanation")
+        clear = gr.ClearButton([msg, chatbot])
+
+        msg.submit(respond, [msg, chatbot], [msg, chatbot, explanation])
+
+demo.launch()
